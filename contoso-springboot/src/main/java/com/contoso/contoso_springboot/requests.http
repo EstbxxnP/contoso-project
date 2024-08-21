@@ -1,0 +1,40 @@
+
+### GET request to example server
+
+POST localhost:8080/companys
+Content-Type: application/json
+
+{
+  "idCompania": 1,
+  "nombre": "Contoso",
+  "direccion": "Cra 87H # 45d",
+  "ciudadOperacion": "Cali"
+}
+
+###
+POST localhost:8080/departaments
+Content-Type: application/json
+
+{
+  "idDepartamento": 1,
+  "descripcion": "Seguridad",
+  "idCompany": 1
+}
+
+###
+
+POST localhost:8080/users
+Content-Type: application/json
+
+{
+  "idUsuario": 1,
+  "nombre": "Jairo",
+  "apellido": "Hernández",
+  "cargo": "Administrador",
+  "direccion": "Cra 87 #78C",
+  "telefono": "+57 311 987 2188",
+  "ciudadResidencia": "Bogotá, D.C",
+  "estadoUsuario": "Activo",
+  "salario": 30000,
+  "idDepartament": 1
+}

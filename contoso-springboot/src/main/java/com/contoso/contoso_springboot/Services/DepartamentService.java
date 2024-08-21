@@ -3,7 +3,7 @@ package com.contoso.contoso_springboot.Services;
 import com.contoso.contoso_springboot.Models.Departament;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +21,7 @@ public class DepartamentService {
     }
 
 
-    public Departament getIdDepartament(Long id) {
+    public Departament getIdByDepartament(Long id) {
         Departament departamento = departaments.get(id);
         if (departamento == null) {
             throw new IllegalArgumentException("Departamento no encontrado con ID: " + id);
@@ -42,7 +42,7 @@ public class DepartamentService {
 
 
     public void updateDepartament(Long id, Departament updatedDepartament) {
-        Departament departament = getIdDepartament(id);
+        Departament departament = getIdByDepartament(id);
         if (departament != null) {
             departament.setDescripcion(updatedDepartament.getDescripcion());
         }

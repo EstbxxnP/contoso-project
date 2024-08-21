@@ -10,7 +10,12 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
 
+    private final DepartamentService departamentService;
     private List<User> users = new ArrayList<>();
+
+    public UserService(DepartamentService departamentService) {
+        this.departamentService = departamentService;
+    }
 
     public List<User> getUsers() {
         return users;
@@ -27,6 +32,7 @@ public class UserService {
         if (existingUser.isPresent()) {
             throw new IllegalArgumentException("User already exist! " + "Id user: " + user.getIdUsuario());
         }
+        user.setDepartament(departamentService.getIdByDepartament(user.getIdDepartament()));
 
         users.add(user);
         return user;

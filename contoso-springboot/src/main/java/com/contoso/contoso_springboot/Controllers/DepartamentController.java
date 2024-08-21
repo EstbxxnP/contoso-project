@@ -23,7 +23,7 @@ public class DepartamentController {
 
     @GetMapping("/{id}")
     public Departament getByIdDepartament(@PathVariable Long id) {
-        return departamentService.getIdDepartament(id);
+        return departamentService.getIdByDepartament(id);
     }
 
     @PostMapping

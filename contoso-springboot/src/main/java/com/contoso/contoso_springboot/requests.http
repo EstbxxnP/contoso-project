@@ -10,3 +10,23 @@ Content-Type: application/json
   "lastName": "Gómez",
   "email": "juangomez@gmail.com"
 }
+
+###
+
+POST localhost:8080/person/update
+Content-Type: application/json
+
+{
+  "idPerson": 1,
+  "name": "Juan",
+  "lastName": "Gómes",
+  "email": "juanchogomez@hotmail.com",
+  "address": "Cra 87#34 H"
+}
+
+###
+
+DELETE localhost:8080/person/delete/1
+Content-Type: application/json
+
+###

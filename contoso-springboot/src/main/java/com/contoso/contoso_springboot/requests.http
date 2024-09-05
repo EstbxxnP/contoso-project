@@ -35,9 +35,9 @@ POST localhost:8080/companys/add
 Content-Type: application/json
 
 {
-  "name": "Contoso",
-  "cityOfOperation": "Bogotá, D.C",
-  "address": "Calle 182 #45H"
+ "name": "Contoso",
+ "cityOfOperation": "Bogotá, D.C",
+ "address": "Calle 182 #45H"
 }
 
 ###
@@ -46,8 +46,16 @@ POST localhost:8080/departaments/add
 Content-Type: application/json
 
 {
-  "description": "Seguridad"
+  "description": "Marketing",
+  "company": {
+    "idCompany": 1
+  }
 }
+
+###
+
+DELETE localhost:8080/departaments/1
+Content-Type: application/json
 
 ###
 
@@ -63,5 +71,8 @@ Content-Type: application/json
   "address": "Calle76",
   "userStatus": "Active",
   "position": "Gerente",
-  "cityOfResidence": "Bogotá, D.C"
+  "cityOfResidence": "Bogotá, D.C",
+  "departament": {
+    "idDepartament": 102
+  }
 }

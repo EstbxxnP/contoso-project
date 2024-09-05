@@ -40,7 +40,7 @@ public class DepartamentController {
         departamentService.updateDepartament(departament);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteDepartament(@PathVariable Long id) {
         departamentService.deleteDepartament(id);
     }

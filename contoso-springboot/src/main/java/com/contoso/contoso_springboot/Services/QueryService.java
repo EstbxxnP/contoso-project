@@ -19,7 +19,7 @@ public class QueryService {
         Map<String, Long> usersAmount = new HashMap<>();
         for (Departament dp : departaments) {
 
-            usersAmount.put(dp.getDescripcion(), (long) dp.getUsers().size());
+            usersAmount.put(dp.getDescription(), (long) dp.getUsers().size());
         }
 
         return usersAmount;
@@ -31,7 +31,7 @@ public class QueryService {
         Map<String, Long> departamentsAmount = new HashMap<>();
         for (Company comp : companys) {
 
-            departamentsAmount.put(comp.getNombre(), (long) comp.getDepartaments().size());
+            departamentsAmount.put(comp.getName(), (long) comp.getDepartaments().size());
         }
 
         return departamentsAmount;
@@ -46,10 +46,10 @@ public class QueryService {
 
             for (User usr : dp.getUsers()) {
 
-                totalExpenses += usr.getSalario();
+                totalExpenses += usr.getSalary();
             }
 
-            expensesDepartament.put(dp.getDescripcion(),totalExpenses);
+            expensesDepartament.put(dp.getDescription(),totalExpenses);
         }
 
         return expensesDepartament;
@@ -65,12 +65,12 @@ public class QueryService {
             for (Departament dp : comp.getDepartaments()) {
                 for (User usr : dp.getUsers()) {
 
-                    totalExpenses += usr.getSalario();
+                    totalExpenses += usr.getSalary();
                 }
 
             }
 
-            expensesCompany.put(comp.getNombre(), totalExpenses);
+            expensesCompany.put(comp.getName(), totalExpenses);
         }
 
         return expensesCompany;

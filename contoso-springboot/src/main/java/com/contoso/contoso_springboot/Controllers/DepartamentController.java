@@ -1,17 +1,21 @@
 package com.contoso.contoso_springboot.Controllers;
 
-
 import com.contoso.contoso_springboot.Models.Departament;
+import com.contoso.contoso_springboot.Repositories.DepartamentRepository;
+import com.contoso.contoso_springboot.Repositories.PersonRepository;
 import com.contoso.contoso_springboot.Services.DepartamentService;
+import com.contoso.contoso_springboot.Services.PersonService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/departaments")
 public class DepartamentController {
+
 
     @Autowired
     private DepartamentService departamentService;
@@ -22,21 +26,21 @@ public class DepartamentController {
     }
 
     @GetMapping("/{id}")
-    public Departament getByIdDepartament(@PathVariable Long id) {
-        return departamentService.getIdByDepartament(id);
+    public Optional<Departament> getDepartamentById(@PathVariable Long id) {
+        return departamentService.getDepartamentById(id);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public void addDepartament(@Valid @RequestBody Departament departament) {
         departamentService.addDepartament(departament);
     }
 
-    @PutMapping("/{id}")
-    public void uptdateDepartament(@PathVariable Long id, @RequestBody Departament departament) {
-        departamentService.updateDepartament(id, departament);
+    @PutMapping("/update")
+    public void uptdateDepartament(@RequestBody Departament departament) {
+        departamentService.updateDepartament(departament);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteDepartament(@PathVariable Long id) {
         departamentService.deleteDepartament(id);
     }

@@ -1,39 +1,37 @@
 package com.contoso.contoso_springboot.Services;
 
 import com.contoso.contoso_springboot.Models.Company;
+import com.contoso.contoso_springboot.Repositories.CompanyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyService {
 
-    private List<Company> companys = new ArrayList<>();
+    @Autowired
+    CompanyRepository companyRepository;
 
     public List<Company> getCompanys() {
-        return companys;
+        return companyRepository.findAll();
     }
 
-    public Company getCompanyById(Long id) {
-        return companys.stream().filter(company -> company.getIdCompania().equals(id)).findFirst().orElse(null);
+    public Optional<Company> getCompanyById(Long id) {
+        return companyRepository.findById(id);
     }
 
-    public void addCompany(Company company) {
-        companys.add(company);
+    public void addCompany(Company company){
+        companyRepository.save(company);
     }
 
-    public void updateCompany(Long id, Company updatedCompany) {
-        Company company = getCompanyById(id);
-        if (company != null) {
-            company.setNombre(updatedCompany.getNombre());
-            company.setNombre(updatedCompany.getDireccion());
-            company.setNombre(updatedCompany.getCiudadOperacion());
-
-        }
+    public void updateCompany(Company company){
+        companyRepository.save(company);
     }
 
-    public void deleteCompany(Long id) {
-        companys.removeIf(company -> company.getIdCompania().equals(id));
+    public void deleteCompany(Long id){
+        companyRepository.deleteById(id);
     }
 }
 

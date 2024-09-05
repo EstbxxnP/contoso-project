@@ -30,3 +30,38 @@ DELETE localhost:8080/person/delete/1
 Content-Type: application/json
 
 ###
+
+POST localhost:8080/companys/add
+Content-Type: application/json
+
+{
+  "name": "Contoso",
+  "cityOfOperation": "Bogotá, D.C",
+  "address": "Calle 182 #45H"
+}
+
+###
+
+POST localhost:8080/departaments/add
+Content-Type: application/json
+
+{
+  "description": "Seguridad"
+}
+
+###
+
+
+POST localhost:8080/users/add
+Content-Type: application/json
+
+{
+  "name": "Pedro",
+  "lastName": "Pelaez",
+  "phoneNumber": "311 9812 121",
+  "salary":30000,
+  "address": "Calle76",
+  "userStatus": "Active",
+  "position": "Gerente",
+  "cityOfResidence": "Bogotá, D.C"
+}

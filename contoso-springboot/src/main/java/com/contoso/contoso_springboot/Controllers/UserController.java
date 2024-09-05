@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 @RestController
@@ -32,37 +33,37 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User getByIdUser(@PathVariable Long id) {
-        return userService.getIdUser(id);
+    public Optional<User> getByIdUser(@PathVariable Long id) {
+        return userService.getUserById(id);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public void addUser(@Valid @RequestBody User user) {
         userService.addUser(user);
     }
 
-    @PutMapping("/{id}")
-    public void updateUser(@PathVariable Long id, @RequestBody User user) {
-        userService.updateUser(id, user);
+    @PutMapping("/update")
+    public void updateUser(@RequestBody User user) {
+        userService.updateUser(user);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
 
-    @GetMapping("/company/{IdCompany}")
+    /** @GetMapping("/company/{IdCompany}")
     public ResponseEntity<List<User>> getUsersByCompany(@PathVariable Long IdCompany) {
 
         try {
 
-            List<User> users = userService.getUsersByCompany(IdCompany);
+            List<User> users = userService.getUserById(IdCompany);
             return new ResponseEntity<>(users, HttpStatus.OK);
 
         }catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
         }
-    }
+    }**/
 
 }
 

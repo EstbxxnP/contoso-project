@@ -1,6 +1,7 @@
 package com.contoso.contoso_springboot.Controllers;
 
 import com.contoso.contoso_springboot.Models.Company;
+import com.contoso.contoso_springboot.Repositories.CompanyRepository;
 import com.contoso.contoso_springboot.Services.CompanyService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,36 +14,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
 @RequestMapping("/companys")
 public class CompanyController {
 
+
     @Autowired
     private CompanyService companyService;
 
     @GetMapping
-    public List<Company> getAllCompanys() {
+    public List<Company> getCompanys() {
         return companyService.getCompanys();
     }
 
     @GetMapping("/{id}")
-    public Company getIdCompany(@PathVariable Long id) {
+    public Optional<Company> getCompanyById(@PathVariable Long id) {
         return companyService.getCompanyById(id);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public void addCompany(@Valid @RequestBody Company company) {
         companyService.addCompany(company);
     }
 
-    @PutMapping("/{id}")
-    public void updateCompany(@PathVariable Long id, @RequestBody Company company) {
-        companyService.updateCompany(id, company);
+    @PutMapping("/update")
+    public void updateCompany(@RequestBody Company company) {
+        companyService.updateCompany(company);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteCompany(@PathVariable Long id) {
         companyService.deleteCompany(id);
     }

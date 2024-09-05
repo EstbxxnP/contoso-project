@@ -14,11 +14,13 @@ public class PersonController {
 
     @Autowired
     private PersonRepository personRepository;
+
     @Autowired
     private PersonService personService;
 
     @PostMapping("/addPerson")
     public void addPerson(@RequestBody Person person){
+
         personRepository.save(person);
     }
 
@@ -27,7 +29,7 @@ public class PersonController {
         return personService.getPersons();
     }
 
-    @GetMapping("/person/{id}")
+    @GetMapping("/{id}")
     public Optional<Person> getPersonById(@PathVariable Long id){
         return personService.getPersonById(id);
     }
@@ -44,7 +46,7 @@ public class PersonController {
 
     @PostMapping("/update")
     public void updatePerson(@RequestBody Person person){
-        personService.savePerson(person);
+        personService.updatePerson(person);
     }
 
 }

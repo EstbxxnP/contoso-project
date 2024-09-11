@@ -1,38 +1,28 @@
 package com.contoso.contoso_springboot.Services;
-
 import com.contoso.contoso_springboot.Models.User;
 import com.contoso.contoso_springboot.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService {
-
     @Autowired
     UserRepository userRepository;
 
     public List<User> getUsers() {
-        return userRepository.findAll();
-    }
+        return userRepository.findAll();}
 
     public Optional<User> getUserById(Long id) {
-        return userRepository.findById(id);
-    }
+        return userRepository.findById(id);}
 
     public void addUser(User user) {
-        userRepository.save(user);
-    }
+        userRepository.save(user);}
 
     public void updateUser(User user) {
-        userRepository.save(user);
-    }
+        userRepository.save(user);}
 
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
-    }
-
+        userRepository.deleteById(id);}
 }

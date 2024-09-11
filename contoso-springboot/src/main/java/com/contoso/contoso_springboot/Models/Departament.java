@@ -1,10 +1,7 @@
 package com.contoso.contoso_springboot.Models;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -26,7 +23,6 @@ public class Departament {
 
     @OneToMany(mappedBy = "departament")
     private List<User> users;
-
 }
 
 

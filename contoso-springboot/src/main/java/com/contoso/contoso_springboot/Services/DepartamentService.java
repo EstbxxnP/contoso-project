@@ -15,22 +15,17 @@ public class DepartamentService {
     DepartamentRepository departamentRepository;
 
     public List<Departament> getDepartaments() {
-        return departamentRepository.findAll();
-    }
+        return departamentRepository.findAll();}
 
     public Optional<Departament> getDepartamentById(Long id){
-        return departamentRepository.findById(id);
-    }
+        return departamentRepository.findById(id);}
 
     public void addDepartament (Departament departament){
-        departamentRepository.save(departament);
-    }
+        departamentRepository.save(departament);}
 
     public void updateDepartament (Departament departament){
-        departamentRepository.save(departament);
-    }
+        departamentRepository.save(departament);}
 
     public void deleteDepartament (Long id){
-        departamentRepository.deleteById(id);
-    }
+        departamentRepository.deleteById(id);}
 }

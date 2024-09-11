@@ -1,9 +1,14 @@
 package com.contoso.contoso_springboot.Models;
-
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import org.springframework.web.server.CoWebFilter;
 
 @Data
 @Entity
@@ -12,7 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
     @NotNull(message = "ID user can´t be Null")
-    private long idUser;
+    private long userId;
 
     @Column
     @NotNull(message = "Name user can´t be Null")

@@ -35,9 +35,9 @@ POST localhost:8080/companys/add
 Content-Type: application/json
 
 {
- "name": "Contoso",
- "cityOfOperation": "Bogotá, D.C",
- "address": "Calle 182 #45H"
+ "name": "AguaMarina",
+ "cityOfOperation": "Cali",
+ "address": "Calle 10 #80C"
 }
 
 ###
@@ -46,9 +46,9 @@ POST localhost:8080/departaments/add
 Content-Type: application/json
 
 {
-  "description": "Marketing",
+  "description": "Contabilidad",
   "company": {
-    "idCompany": 1
+    "idCompany": 2
   }
 }
 
@@ -64,15 +64,15 @@ POST localhost:8080/users/add
 Content-Type: application/json
 
 {
-  "name": "Pedro",
-  "lastName": "Pelaez",
-  "phoneNumber": "311 9812 121",
+  "name": "Juan",
+  "lastName": "Rodrigo",
+  "phoneNumber": "320 5231 112",
   "salary":30000,
-  "address": "Calle76",
+  "address": "Avenida Centenario",
   "userStatus": "Active",
   "position": "Gerente",
   "cityOfResidence": "Bogotá, D.C",
   "departament": {
-    "idDepartament": 102
+    "idDepartament": 1
   }
 }

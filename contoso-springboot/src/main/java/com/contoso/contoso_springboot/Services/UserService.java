@@ -25,4 +25,15 @@ public class UserService {
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);}
+
+    public List<Object[]> usersByDepartamentAndCompany() {
+        return userRepository.usersByDepartamentAndCompany();
+    }
+    public List<Object[]> countDepartamentsByCompanys() {
+        return userRepository.countDepartamentsByCompanys();
+    }
+    public List<Object[]> salaryByDepartamentAndCompany() {
+        return userRepository.salaryByDepartamentAndCompany();
+    }
 }
+

@@ -30,5 +30,16 @@ public class UserController {
     public void updateUser(@RequestBody User user) {userService.updateUser(user);}
     @DeleteMapping("/delete/{id}")
     public void deleteUser(@PathVariable Long id) {userService.deleteUser(id);}
+    @GetMapping("/usersByDepartamentAndCompany")
+    public List<Object[]> usersByDepartamentAndCompany() {
+        return userService.usersByDepartamentAndCompany();}
+    @GetMapping("/countDepartamentsByCompanys")
+    public List<Object[]> countDepartamentsByCompanys() {
+        return userService.countDepartamentsByCompanys();}
+    @GetMapping("/salaryByDepartamentAndCompany")
+    public List<Object[]> salaryByDepartamentAndCompany() {
+        return userService.salaryByDepartamentAndCompany();
+    }
 }
+
 

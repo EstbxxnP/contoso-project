@@ -1,4 +1,5 @@
 package com.contoso.contoso_springboot.Controllers;
+
 import com.contoso.contoso_springboot.Models.Company;
 import com.contoso.contoso_springboot.Services.CompanyService;
 import jakarta.validation.Valid;
@@ -23,20 +24,29 @@ public class CompanyController {
     public List<Company> getCompanys() {
         return companyService.getCompanys();
     }
+
     @GetMapping("/{id}")
     public Optional<Company> getCompanyById(@PathVariable Long id) {
         return companyService.getCompanyById(id);
     }
+
     @PostMapping("/add")
     public void addCompany(@Valid @RequestBody Company company) {
         companyService.addCompany(company);
     }
+
     @PutMapping("/update")
     public void updateCompany(@RequestBody Company company) {
         companyService.updateCompany(company);
     }
+
     @DeleteMapping("/{id}")
     public void deleteCompany(@PathVariable Long id) {
         companyService.deleteCompany(id);
+    }
+
+    @GetMapping("/salaryByDepartamentAndCompany")
+    public List<Object[]> salaryByDepartamentAndCompany() {
+        return companyService.salaryByDepartamentAndCompany();
     }
 }

@@ -1,4 +1,5 @@
 package com.contoso.contoso_springboot.Models;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

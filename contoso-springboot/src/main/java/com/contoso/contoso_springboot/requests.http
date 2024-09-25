@@ -46,9 +46,9 @@ POST localhost:8080/departaments/add
 Content-Type: application/json
 
 {
-  "description": "Contabilidad",
+  "description": "Seguridad",
   "company": {
-    "idCompany": 2
+    "companyId": 1
   }
 }
 
@@ -64,15 +64,15 @@ POST localhost:8080/users/add
 Content-Type: application/json
 
 {
-  "name": "Juan",
-  "lastName": "Rodrigo",
-  "phoneNumber": "320 5231 112",
+  "name": "Camilo",
+  "lastName": "Ramirez",
+  "phoneNumber": "310 1231 112",
   "salary":30000,
-  "address": "Avenida Centenario",
+  "address": "Avenida Caracas",
   "userStatus": "Active",
   "position": "Gerente",
   "cityOfResidence": "Bogotá, D.C",
   "departament": {
-    "idDepartament": 1
+    "idDepartament": 3
   }
 }

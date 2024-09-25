@@ -28,4 +28,8 @@ public class DepartamentService {
 
     public void deleteDepartament (Long id){
         departamentRepository.deleteById(id);}
+
+    public List<Object[]> countDepartamentsByCompanys() {
+        return departamentRepository.countDepartamentsByCompanys();
+    }
 }

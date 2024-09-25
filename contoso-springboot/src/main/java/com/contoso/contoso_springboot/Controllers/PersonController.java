@@ -15,23 +15,30 @@ public class PersonController {
     @Autowired
     private PersonService personService;
     @PostMapping("/addPerson")
-    public void addPerson(@RequestBody Person person){personRepository.save(person);}
+    public void addPerson(@RequestBody Person person){
+        personRepository.save(person);
+    }
+
     @GetMapping("/persons")
     public List<Person> getPersons(){
         return personService.getPersons();
     }
+
     @GetMapping("/{id}")
     public Optional<Person> getPersonById(@PathVariable Long id){
         return personService.getPersonById(id);
     }
+
     @DeleteMapping("/delete/{id}")
     public void deletePerson(@PathVariable Long id){
         personService.deletePerson(id);
     }
+
     @PostMapping("/save")
     public void savePerson(@RequestBody Person person){
         personService.savePerson(person);
     }
+
     @PostMapping("/update")
     public void updatePerson(@RequestBody Person person){
         personService.updatePerson(person);

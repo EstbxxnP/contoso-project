@@ -1,4 +1,5 @@
 package com.contoso.contoso_springboot.Services;
+
 import com.contoso.contoso_springboot.Models.Company;
 import com.contoso.contoso_springboot.Repositories.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +15,28 @@ public class CompanyService {
     CompanyRepository companyRepository;
 
     public List<Company> getCompanys() {
-        return companyRepository.findAll();}
+        return companyRepository.findAll();
+    }
 
     public Optional<Company> getCompanyById(Long id) {
-        return companyRepository.findById(id);}
+        return companyRepository.findById(id);
+    }
 
     public void addCompany(Company company){
-        companyRepository.save(company);}
+        companyRepository.save(company);
+    }
 
     public void updateCompany(Company company){
         companyRepository.save(company);}
 
+
     public void deleteCompany(Long id){
-        companyRepository.deleteById(id);}
+        companyRepository.deleteById(id);
+    }
+
+    public List<Object[]> salaryByDepartamentAndCompany() {
+        return companyRepository.salaryByDepartamentAndCompany();
+    }
 }
 
 

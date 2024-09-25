@@ -1,4 +1,5 @@
 package com.contoso.contoso_springboot.Models;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

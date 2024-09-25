@@ -1,4 +1,5 @@
 package com.contoso.contoso_springboot.Services;
+
 import com.contoso.contoso_springboot.Models.User;
 import com.contoso.contoso_springboot.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,28 +13,27 @@ public class UserService {
     UserRepository userRepository;
 
     public List<User> getUsers() {
-        return userRepository.findAll();}
+        return userRepository.findAll();
+    }
 
     public Optional<User> getUserById(Long id) {
-        return userRepository.findById(id);}
+        return userRepository.findById(id);
+    }
 
     public void addUser(User user) {
-        userRepository.save(user);}
+        userRepository.save(user);
+    }
 
     public void updateUser(User user) {
-        userRepository.save(user);}
+        userRepository.save(user);
+    }
 
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);}
+        userRepository.deleteById(id);
+    }
 
     public List<Object[]> usersByDepartamentAndCompany() {
         return userRepository.usersByDepartamentAndCompany();
-    }
-    public List<Object[]> countDepartamentsByCompanys() {
-        return userRepository.countDepartamentsByCompanys();
-    }
-    public List<Object[]> salaryByDepartamentAndCompany() {
-        return userRepository.salaryByDepartamentAndCompany();
     }
 }
 

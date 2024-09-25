@@ -24,7 +24,8 @@ public class QueryController {
             Map<String, Long> total = queryService.queryUsersByDepartament(departaments);
             return new ResponseEntity<>(total, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);}
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     @PostMapping("/departamentsByCompany")
     public ResponseEntity<Map<String, Long>> queryDepartamentsByCompany(@RequestBody List<Company> companys) {
@@ -32,7 +33,8 @@ public class QueryController {
             Map<String, Long> total = queryService.queryDepartamentsByCompany(companys);
             return new ResponseEntity<>(total, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);}
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     @PostMapping("/getExpensesByDepartament")
     public ResponseEntity<Map<String, Double>> getExpensesByDepartament(@RequestBody  List<Departament> departaments) {
@@ -42,7 +44,8 @@ public class QueryController {
             return new ResponseEntity<>(total, HttpStatus.OK);
 
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);}
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     @PostMapping("/getExpensesByCompany")
     public ResponseEntity <Map<String, Double>> getExpensesByCompany(@RequestBody  List<Company> companys) {
@@ -50,6 +53,7 @@ public class QueryController {
             Map<String, Double> total = queryService.getExpensesByCompany(companys);
             return new ResponseEntity<>(total, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);}
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

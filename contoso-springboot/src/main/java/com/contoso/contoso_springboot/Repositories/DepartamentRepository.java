@@ -1,5 +1,6 @@
 package com.contoso.contoso_springboot.Repositories;
 
+import com.contoso.contoso_springboot.DTO.DepartamentsByCompanysDTO;
 import com.contoso.contoso_springboot.Models.Departament;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,4 +14,12 @@ public interface DepartamentRepository extends JpaRepository<Departament, Long> 
             "GROUP BY c.name " +
             "ORDER BY c.name")
     List<Object[]> countDepartamentsByCompanys();
+
+
+    @Query("SELECT new com.contoso.contoso_springboot.DTO(c.name, COUNT(d)) " +
+            "FROM Departament d " +
+            "JOIN d.company c " +
+            "GROUP BY c.name " +
+            "ORDER BY c.name")
+    List<DepartamentsByCompanysDTO> countDepartamentsByCompanyss();
 }

@@ -16,7 +16,7 @@ public interface DepartamentRepository extends JpaRepository<Departament, Long> 
     List<Object[]> countDepartamentsByCompanys();
 
 
-    @Query("SELECT new com.contoso.contoso_springboot.DTO(c.name, COUNT(d)) " +
+    @Query("SELECT new com.contoso.contoso_springboot.DTO.DepartamentsByCompanysDTO(c.name, COUNT(d)) " +
             "FROM Departament d " +
             "JOIN d.company c " +
             "GROUP BY c.name " +

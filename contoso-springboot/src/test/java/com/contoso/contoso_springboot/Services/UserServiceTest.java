@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserServiceTest {
 
+    @Mock
+    private UserRepository userRepository;
+
     @Test
     public void test1() {
         UserService userService = new UserService();

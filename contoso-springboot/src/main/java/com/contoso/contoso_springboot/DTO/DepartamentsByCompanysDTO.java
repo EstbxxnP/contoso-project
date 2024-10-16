@@ -5,13 +5,11 @@ public class DepartamentsByCompanysDTO {
     private String company;
     private Long numberOfDepartaments;
 
-    // Constructor
     public DepartamentsByCompanysDTO(String company, Long numberOfDepartaments) {
         this.company = company;
         this.numberOfDepartaments = numberOfDepartaments;
     }
 
-    // Getters y Setters
     public String getCompany() {
         return company;
     }

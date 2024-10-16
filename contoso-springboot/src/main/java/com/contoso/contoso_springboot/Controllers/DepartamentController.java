@@ -1,6 +1,8 @@
 package com.contoso.contoso_springboot.Controllers;
 
+import com.contoso.contoso_springboot.DTO.DepartamentsByCompanysDTO;
 import com.contoso.contoso_springboot.Models.Departament;
+import com.contoso.contoso_springboot.Repositories.DepartamentRepository;
 import com.contoso.contoso_springboot.Services.DepartamentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,7 @@ public class DepartamentController {
     }
 
     @GetMapping("/countDepartamentsByCompanys")
-    public List<Object[]> countDepartamentsByCompanys() {
+    public List<DepartamentsByCompanysDTO> countDepartamentsByCompanys() {
         return departamentService.countDepartamentsByCompanys();
     }
 }

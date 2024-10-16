@@ -1,5 +1,6 @@
 package com.contoso.contoso_springboot.Controllers;
 
+import com.contoso.contoso_springboot.DTO.SalaryByDepartamentAndCompanyDTO;
 import com.contoso.contoso_springboot.Models.Company;
 import com.contoso.contoso_springboot.Services.CompanyService;
 import jakarta.validation.Valid;
@@ -46,7 +47,7 @@ public class CompanyController {
     }
 
     @GetMapping("/salaryByDepartamentAndCompany")
-    public List<Object[]> salaryByDepartamentAndCompany() {
+    public List<SalaryByDepartamentAndCompanyDTO> salaryByDepartamentAndCompany() {
         return companyService.salaryByDepartamentAndCompany();
     }
 }

@@ -1,5 +1,6 @@
 package com.contoso.contoso_springboot.Controllers;
 
+import com.contoso.contoso_springboot.DTO.UsersByDepartamentAndCompanyDTO;
 import com.contoso.contoso_springboot.Models.User;
 import com.contoso.contoso_springboot.Services.UserService;
 import jakarta.validation.Valid;
@@ -49,7 +50,7 @@ public class UserController {
     }
 
     @GetMapping("/usersByDepartamentAndCompany")
-    public List<Object[]> usersByDepartamentAndCompany() {
+    public List<UsersByDepartamentAndCompanyDTO> usersByDepartamentAndCompany() {
         return userService.usersByDepartamentAndCompany();
     }
 }

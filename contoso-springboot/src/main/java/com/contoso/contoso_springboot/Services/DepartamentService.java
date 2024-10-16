@@ -1,5 +1,6 @@
 package com.contoso.contoso_springboot.Services;
 
+import com.contoso.contoso_springboot.DTO.DepartamentsByCompanysDTO;
 import com.contoso.contoso_springboot.Models.Departament;
 import com.contoso.contoso_springboot.Repositories.DepartamentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class DepartamentService {
     public void deleteDepartament (Long id){
         departamentRepository.deleteById(id);}
 
-    public List<Object[]> countDepartamentsByCompanys() {
+    public List<DepartamentsByCompanysDTO> countDepartamentsByCompanys() {
         return departamentRepository.countDepartamentsByCompanys();
     }
 }

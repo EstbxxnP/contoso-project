@@ -1,5 +1,6 @@
 package com.contoso.contoso_springboot.Services;
 
+import com.contoso.contoso_springboot.DTO.UsersByDepartamentAndCompanyDTO;
 import com.contoso.contoso_springboot.Models.User;
 import com.contoso.contoso_springboot.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public List<Object[]> usersByDepartamentAndCompany() {
+    public List<UsersByDepartamentAndCompanyDTO> usersByDepartamentAndCompany() {
         return userRepository.usersByDepartamentAndCompany();
     }
 }

@@ -8,18 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface DepartamentRepository extends JpaRepository<Departament, Long> {
-    @Query("SELECT c.name AS company, COUNT(d) AS numberOfDepartaments " +
-            "FROM Departament d " +
-            "JOIN d.company c " +
-            "GROUP BY c.name " +
-            "ORDER BY c.name")
-    List<Object[]> countDepartamentsByCompanys();
-
 
     @Query("SELECT new com.contoso.contoso_springboot.DTO.DepartamentsByCompanysDTO(c.name, COUNT(d)) " +
             "FROM Departament d " +
             "JOIN d.company c " +
             "GROUP BY c.name " +
             "ORDER BY c.name")
-    List<DepartamentsByCompanysDTO> countDepartamentsByCompanyss();
+    List<DepartamentsByCompanysDTO> countDepartamentsByCompanys();
 }

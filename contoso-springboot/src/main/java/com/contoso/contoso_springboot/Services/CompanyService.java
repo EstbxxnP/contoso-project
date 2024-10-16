@@ -1,5 +1,6 @@
 package com.contoso.contoso_springboot.Services;
 
+import com.contoso.contoso_springboot.DTO.SalaryByDepartamentAndCompanyDTO;
 import com.contoso.contoso_springboot.Models.Company;
 import com.contoso.contoso_springboot.Repositories.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,11 @@ public class CompanyService {
     public void updateCompany(Company company){
         companyRepository.save(company);}
 
-
     public void deleteCompany(Long id){
         companyRepository.deleteById(id);
     }
 
-    public List<Object[]> salaryByDepartamentAndCompany() {
+    public List<SalaryByDepartamentAndCompanyDTO> salaryByDepartamentAndCompany() {
         return companyRepository.salaryByDepartamentAndCompany();
     }
 }

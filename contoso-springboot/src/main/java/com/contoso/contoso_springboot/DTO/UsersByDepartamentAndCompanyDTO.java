@@ -1,17 +1,13 @@
 package com.contoso.contoso_springboot.DTO;
 
+
+@Data
 public class UsersByDepartamentAndCompanyDTO {
 
     private String departament;
     private String company;
     private Long numberOfUsers;
 
-
-    public UsersByDepartamentAndCompanyDTO(Long numberOfUsers, String company, String departament) {
-        this.numberOfUsers = numberOfUsers;
-        this.company = company;
-        this.departament = departament;
-    }
 
     public UsersByDepartamentAndCompanyDTO(String company, String departament, Long numberOfUsers) {
         this.company = company;

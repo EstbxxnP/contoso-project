@@ -4,12 +4,14 @@ import com.contoso.contoso_springboot.Models.User;
 import com.contoso.contoso_springboot.Repositories.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatchers;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 class UserServiceTest {
 
@@ -19,14 +21,14 @@ class UserServiceTest {
     @Mock
     private UserRepository userRepository;
 
-
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
+
     @Test
-    void test1() {
+    void saveUserTest() {
 
         User user = new User();
         user.setUserId(1L);
@@ -45,7 +47,7 @@ class UserServiceTest {
     }
 
     @Test
-    void test2() {
+    void deleteUserTest() {
         Long id = 1L;
 
         doNothing().when(userRepository).deleteById(id);
@@ -54,26 +56,57 @@ class UserServiceTest {
     }
 
     @Test
-    void getUsers() {
+    void getUsersTest() {
+
+        User user = new User();
+        user.setUserId(1L);
+        user.setName("Juan");
+
+        given(userRepository.findAll()).willReturn(Arrays.asList(user));
+
+        List<User> users = userService.getUsers();
+
+        assertThat(users)
+                .isNotEmpty()
+                .extracting(User::getName)
+                .contains("Juan");
     }
 
     @Test
-    void getUserById() {
+    void getUserByIdTest() {
+
+        User user = new User();
+        user.setUserId(1L);
+        user.setName("Juan");
+
+        given(userRepository.findById(user.getUserId())).willReturn(Optional.of(user));
+
+        Optional<User> userNotFound = userService.getUserById(user.getUserId());
+
+        assertThat(userNotFound).isPresent();
+        assertThat(userNotFound.get().getName()).isEqualTo("Juan");
     }
 
     @Test
-    void addUser() {
-    }
+    void updateUserTest() {
 
-    @Test
-    void updateUser() {
-    }
+        Long userId = 1L;
 
-    @Test
-    void deleteUser() {
-    }
+        User user = new User();
+        user.setUserId(userId);
+        user.setName("Juan");
 
-    @Test
-    void usersByDepartamentAndCompany() {
+        User updatedUser = new User();
+        updatedUser.setUserId(userId);
+        updatedUser.setName("Carlos");
+
+        given(userRepository.findById(userId)).willReturn(Optional.of(user));
+        given(userRepository.save(updatedUser)).willReturn(updatedUser);
+
+        userService.updateUser(updatedUser);
+
+        assertThat(updatedUser.getName()).isEqualTo("Carlos");
+        verify(userRepository).save(updatedUser);
     }
 }
+

@@ -1,40 +1,98 @@
 
 ### GET request to example server
 
-POST localhost:8080/companys
+
+POST localhost:8080/person/addPerson
 Content-Type: application/json
 
 {
-  "idCompania": 1,
-  "nombre": "Contoso",
-  "direccion": "Cra 87H # 45d",
-  "ciudadOperacion": "Cali"
-}
-
-###
-POST localhost:8080/departaments
-Content-Type: application/json
-
-{
-  "idDepartamento": 1,
-  "descripcion": "Seguridad",
-  "idCompany": 1
+  "name": "Juan",
+  "lastName": "Gómez",
+  "email": "juangomez@gmail.com"
 }
 
 ###
 
-POST localhost:8080/users
+POST localhost:8080/users/add
 Content-Type: application/json
 
 {
-  "idUsuario": 1,
-  "nombre": "Jairo",
-  "apellido": "Hernández",
-  "cargo": "Administrador",
-  "direccion": "Cra 87 #78C",
-  "telefono": "+57 311 987 2188",
-  "ciudadResidencia": "Bogotá, D.C",
-  "estadoUsuario": "Activo",
-  "salario": 30000,
-  "idDepartament": 1
+  "name": "Santiago",
+  "lastName": "herrera",
+  "email": "chantiherrera@gmail.com",
+  "position": "Glober",
+  "address": "lacasasca",
+  "phoneNumber": "311 98212",
+  "cityOfResidence": "Caracas",
+  "userStatus": "Active",
+  "salary": 3.3000,
+  "departament": {
+    "idDepartament": 52
+  }
+}
+
+###
+
+POST localhost:8080/person/update
+Content-Type: application/json
+
+{
+  "idPerson": 1,
+  "name": "Juan",
+  "lastName": "Gómes",
+  "email": "juanchogomez@hotmail.com",
+  "address": "Cra 87#34 H"
+}
+
+###
+
+DELETE localhost:8080/users/delete/3
+Content-Type: application/json
+
+###
+
+POST localhost:8080/companys/add
+Content-Type: application/json
+
+{
+ "name": "AguaMarina",
+ "cityOfOperation": "Cali",
+ "address": "Calle 10 #80C"
+}
+
+###
+
+POST localhost:8080/departaments/add
+Content-Type: application/json
+
+{
+  "description": "Seguridad",
+  "company": {
+    "companyId": 1
+  }
+}
+
+###
+
+DELETE localhost:8080/departaments/1
+Content-Type: application/json
+
+###
+
+
+POST localhost:8080/users/add
+Content-Type: application/json
+
+{
+  "name": "Camilo",
+  "lastName": "Ramirez",
+  "phoneNumber": "310 1231 112",
+  "salary":30000,
+  "address": "Avenida Caracas",
+  "userStatus": "Active",
+  "position": "Gerente",
+  "cityOfResidence": "Bogotá, D.C",
+  "departament": {
+    "idDepartament": 3
+  }
 }

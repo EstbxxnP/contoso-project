@@ -1,6 +1,6 @@
 package com.contoso.contoso_springboot.Controllers;
 
-import com.contoso.contoso_springboot.Models.Company;
+import com.contoso.contoso_springboot.DTO.UsersByDepartamentAndCompanyDTO;
 import com.contoso.contoso_springboot.Models.User;
 import com.contoso.contoso_springboot.Services.UserService;
 import jakarta.validation.Valid;
@@ -17,52 +17,42 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import java.util.List;
 import java.util.Map;
-
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
-
     @Autowired
     private UserService userService;
-
     @GetMapping
     public List<User> getUsers() {
         return userService.getUsers();
     }
 
     @GetMapping("/{id}")
-    public User getByIdUser(@PathVariable Long id) {
-        return userService.getIdUser(id);
+    public Optional<User> getByIdUser(@PathVariable Long id) {
+        return userService.getUserById(id);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public void addUser(@Valid @RequestBody User user) {
         userService.addUser(user);
     }
 
-    @PutMapping("/{id}")
-    public void updateUser(@PathVariable Long id, @RequestBody User user) {
-        userService.updateUser(id, user);
+    @PutMapping("/update")
+    public void updateUser(@RequestBody User user) {
+        userService.updateUser(user);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
 
-    @GetMapping("/company/{IdCompany}")
-    public ResponseEntity<List<User>> getUsersByCompany(@PathVariable Long IdCompany) {
-
-        try {
-
-            List<User> users = userService.getUsersByCompany(IdCompany);
-            return new ResponseEntity<>(users, HttpStatus.OK);
-
-        }catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
-        }
+    @GetMapping("/usersByDepartamentAndCompany")
+    public List<UsersByDepartamentAndCompanyDTO> usersByDepartamentAndCompany() {
+        return userService.usersByDepartamentAndCompany();
     }
-
 }
+
 

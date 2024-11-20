@@ -1,70 +1,40 @@
 package com.contoso.contoso_springboot.Services;
 
+import com.contoso.contoso_springboot.DTO.UsersByDepartamentAndCompanyDTO;
 import com.contoso.contoso_springboot.Models.User;
+import com.contoso.contoso_springboot.Repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService {
-
-    private final DepartamentService departamentService;
-    private List<User> users = new ArrayList<>();
-
-    public UserService(DepartamentService departamentService) {
-        this.departamentService = departamentService;
-    }
+    @Autowired
+    UserRepository userRepository;
 
     public List<User> getUsers() {
-        return users;
+        return userRepository.findAll();
     }
 
-    public User getIdUser(Long id) {
-        return users.stream().filter(user -> user.getIdUsuario().equals(id)).findFirst().orElse(null);
+    public Optional<User> getUserById(Long id) {
+        return userRepository.findById(id);
     }
 
-
-    public User addUser(User user) {
-        Optional<User> existingUser = users.stream().filter(u -> u.getIdUsuario().equals(user.getIdUsuario())).findFirst();
-
-        if (existingUser.isPresent()) {
-            throw new IllegalArgumentException("User already exist! " + "Id user: " + user.getIdUsuario());
-        }
-        user.setDepartament(departamentService.getIdByDepartament(user.getIdDepartament()));
-
-        users.add(user);
-        return user;
+    public void addUser(User user) {
+        userRepository.save(user);
     }
 
-
-
-    public void updateUser(Long id, User updatedUser) {
-        User user = getIdUser(id);
-        if (user != null) {
-            user.setNombre(updatedUser.getNombre());
-            user.setApellido(updatedUser.getApellido());
-            user.setCargo(updatedUser.getCargo());
-            user.setDireccion(updatedUser.getDireccion());
-            user.setTelefono(updatedUser.getTelefono());
-            user.setCiudadResidencia(updatedUser.getCiudadResidencia());
-            user.setEstadoUsuario(updatedUser.getEstadoUsuario());
-            user.setSalario(updatedUser.getSalario());
-            user.setDepartamento(updatedUser.getDepartamento());
-        }
+    public void updateUser(User user) {
+        userRepository.save(user);
     }
 
     public void deleteUser(Long id) {
-        users.removeIf(user -> user.getIdUsuario().equals(id));
+        userRepository.deleteById(id);
     }
 
-
-
-    public List<User> getUsersByCompany(Long IdCompany){
-
-        return users.stream().filter(u -> u.getDepartamento().getCompany().getIdCompania().equals(IdCompany)).collect(Collectors.toList());
-
+    public List<UsersByDepartamentAndCompanyDTO> usersByDepartamentAndCompany() {
+        return userRepository.usersByDepartamentAndCompany();
     }
-
 }
+

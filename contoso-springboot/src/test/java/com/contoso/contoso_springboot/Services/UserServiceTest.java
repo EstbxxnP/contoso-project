@@ -9,7 +9,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.doNothing;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -25,11 +28,9 @@ class UserServiceTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
-
-
+    
     @Test
     void saveUserTest() {
-
         User user = new User();
         user.setUserId(1L);
         user.setName("Esteban");
@@ -57,7 +58,6 @@ class UserServiceTest {
 
     @Test
     void getUsersTest() {
-
         User user = new User();
         user.setUserId(1L);
         user.setName("Juan");
@@ -74,7 +74,6 @@ class UserServiceTest {
 
     @Test
     void getUserByIdTest() {
-
         User user = new User();
         user.setUserId(1L);
         user.setName("Juan");
@@ -89,9 +88,7 @@ class UserServiceTest {
 
     @Test
     void updateUserTest() {
-
         Long userId = 1L;
-
         User user = new User();
         user.setUserId(userId);
         user.setName("Juan");

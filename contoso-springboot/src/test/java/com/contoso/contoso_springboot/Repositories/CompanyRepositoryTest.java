@@ -19,7 +19,6 @@ class CompanyRepositoryTest {
     @Test
     @Rollback(false)
     public void saveDepartamentTest() {
-
         Company company = new Company();
         company.setCompanyId(1L);
         company.setAddress("Calle 98 # 45 - 67");
@@ -27,14 +26,12 @@ class CompanyRepositoryTest {
         company.setName("Globant");
 
         Company companySaved = companyRepository.save(company);
-
         assertThat(companySaved.getCompanyId()).isNotNull();
     }
 
     @Test
     public void getAllUsersTest() {
         List<Company> companies = companyRepository.findAll();
-
         assertThat(companies).isNotEmpty();
     }
 

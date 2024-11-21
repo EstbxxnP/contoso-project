@@ -19,7 +19,6 @@ class DepartamentRepositoryTest {
     @Test
     @Rollback(false)
     public void saveDepartamentTest() {
-
         Departament departament = new Departament();
         departament.setIdDepartament(1L);
         departament.setDescription("Marketing");
@@ -32,10 +31,8 @@ class DepartamentRepositoryTest {
     @Test
     public void getAllUsersTest() {
         List<Departament> departaments = departamentRepository.findAll();
-
         assertThat(departaments).isNotEmpty();
     }
-
 
     @Test
     void countDepartamentsByCompanys() {

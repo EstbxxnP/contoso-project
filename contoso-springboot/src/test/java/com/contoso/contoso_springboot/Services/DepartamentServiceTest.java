@@ -13,8 +13,11 @@ import java.util.List;
 import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.doNothing;
+;
 
 class DepartamentServiceTest {
 
@@ -31,7 +34,6 @@ class DepartamentServiceTest {
 
     @Test
     void saveDepartamentTest() {
-
         Departament departament = new Departament();
         departament.setIdDepartament(1L);
         departament.setDescription("Seguridad");
@@ -50,10 +52,8 @@ class DepartamentServiceTest {
         verify(departamentRepository, times(1)).deleteById(id);
     }
 
-
     @Test
     void getDepartamentsTest() {
-
         Departament departament = new Departament();
         departament.setIdDepartament(1L);
         departament.setDescription("Seguridad");
@@ -70,7 +70,6 @@ class DepartamentServiceTest {
 
     @Test
     void getDepartamentByIdTest() {
-
         Departament departament = new Departament();
         departament.setIdDepartament(1L);
         departament.setDescription("Marketing");

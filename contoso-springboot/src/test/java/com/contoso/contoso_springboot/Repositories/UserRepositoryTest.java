@@ -30,7 +30,6 @@ class UserRepositoryTest {
         user.setSalary(22.1211);
 
         User savedUser = usuarioRepository.save(user);
-
         assertThat(savedUser.getUserId()).isNotNull();
     }
 
@@ -40,7 +39,6 @@ class UserRepositoryTest {
 
         assertThat(users).isNotEmpty();
     }
-
 
     @Test
     void usersByDepartamentAndCompany() {

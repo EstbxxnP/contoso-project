@@ -69,7 +69,6 @@ class CompanyControllerTest {
         company.setCityOfOperation("Bogotá, D.C");
         company.setName("Globant");
 
-
         given(companyRepository.findById(company.getCompanyId())).willReturn(Optional.of(company));
 
         mockMvc.perform(get("/companys/{id}", company.getCompanyId()))

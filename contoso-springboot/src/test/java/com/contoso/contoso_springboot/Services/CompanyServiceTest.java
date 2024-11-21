@@ -32,7 +32,6 @@ class CompanyServiceTest {
 
     @Test
     void saveCompanyTest() {
-
         Company company = new Company();
         company.setCompanyId(1L);
         company.setAddress("Calle 98 # 45 - 67");

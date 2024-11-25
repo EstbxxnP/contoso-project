@@ -24,7 +24,6 @@ class DepartamentRepositoryTest {
         departament.setDescription("Marketing");
 
         Departament departamentSaved = departamentRepository.save(departament);
-
         assertThat(departamentSaved.getIdDepartament()).isNotNull();
     }
 
@@ -32,9 +31,5 @@ class DepartamentRepositoryTest {
     public void getAllUsersTest() {
         List<Departament> departaments = departamentRepository.findAll();
         assertThat(departaments).isNotEmpty();
-    }
-
-    @Test
-    void countDepartamentsByCompanys() {
     }
 }

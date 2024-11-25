@@ -17,7 +17,6 @@ import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.doNothing;
-;
 
 class DepartamentServiceTest {
 
@@ -59,9 +58,7 @@ class DepartamentServiceTest {
         departament.setDescription("Seguridad");
 
         given(departamentRepository.findAll()).willReturn(Arrays.asList(departament));
-
         List<Departament> departaments = departamentService.getDepartaments();
-
         assertThat(departaments)
                 .isNotEmpty()
                 .extracting(Departament::getDescription)
@@ -75,9 +72,7 @@ class DepartamentServiceTest {
         departament.setDescription("Marketing");
 
         given(departamentRepository.findById(departament.getIdDepartament())).willReturn(Optional.of(departament));
-
         Optional<Departament> userNotFound = departamentService.getDepartamentById(departament.getIdDepartament());
-
         assertThat(userNotFound).isPresent();
         assertThat(userNotFound.get().getDescription()).isEqualTo("Marketing");
     }
@@ -96,9 +91,7 @@ class DepartamentServiceTest {
 
         given(departamentRepository.findById(departamentId)).willReturn(Optional.of(departament));
         given(departamentRepository.save(updatedDepartament)).willReturn(updatedDepartament);
-
         departamentService.updateDepartament(updatedDepartament);
-
         assertThat(updatedDepartament.getDescription()).isEqualTo("Salud");
         verify(departamentRepository).save(updatedDepartament);
 

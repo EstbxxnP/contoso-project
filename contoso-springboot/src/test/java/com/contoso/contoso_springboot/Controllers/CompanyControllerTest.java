@@ -13,7 +13,9 @@ import java.util.Arrays;
 import java.util.Optional;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -38,7 +40,6 @@ class CompanyControllerTest {
         company.setName("Globant");
 
         given(companyRepository.findAll()).willReturn(Arrays.asList(company));
-
         mockMvc.perform(get("/companys"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name").value(company.getName()));
@@ -53,7 +54,6 @@ class CompanyControllerTest {
         company.setName("Globant");
 
         given(companyRepository.save(company)).willReturn(company);
-
         mockMvc.perform(post("/companys")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(company)))
@@ -70,7 +70,6 @@ class CompanyControllerTest {
         company.setName("Globant");
 
         given(companyRepository.findById(company.getCompanyId())).willReturn(Optional.of(company));
-
         mockMvc.perform(get("/companys/{id}", company.getCompanyId()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value(company.getName()));
@@ -86,7 +85,6 @@ class CompanyControllerTest {
 
         given(companyRepository.findById(company.getCompanyId())).willReturn(Optional.of(company));
         doNothing().when(companyRepository).delete(company);
-
         mockMvc.perform(delete("/companys/{id}", company.getCompanyId()))
                 .andExpect(status().isOk());
     }

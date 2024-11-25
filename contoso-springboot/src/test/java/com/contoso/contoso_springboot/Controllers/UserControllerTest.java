@@ -2,8 +2,11 @@ package com.contoso.contoso_springboot.Controllers;
 
 import com.contoso.contoso_springboot.Models.User;
 import com.contoso.contoso_springboot.Repositories.UserRepository;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +45,6 @@ class UserControllerTest {
             user.setSalary(22.1211);
 
             given(userRepository.findAll()).willReturn(Arrays.asList(user));
-
             mockMvc.perform(get("/users"))
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$[0].name").value(user.getName()));
@@ -61,7 +63,6 @@ class UserControllerTest {
             user.setSalary(22.1211);
 
             given(userRepository.save(user)).willReturn(user);
-
             mockMvc.perform(post("/users")
                             .contentType(MediaType.APPLICATION_JSON)
                             .content(objectMapper.writeValueAsString(user)))
@@ -83,7 +84,6 @@ class UserControllerTest {
             user.setSalary(22.1211);
 
             given(userRepository.findById(user.getUserId())).willReturn(Optional.of(user));
-
             mockMvc.perform(get("/users/{id}", user.getUserId()))
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.name").value(user.getName()));
@@ -104,9 +104,8 @@ class UserControllerTest {
 
             given(userRepository.findById(user.getUserId())).willReturn(Optional.of(user));
             doNothing().when(userRepository).delete(user);
-
             mockMvc.perform(delete("/users/{id}", user.getUserId()))
                     .andExpect(status().isOk());
         }
-    }
+}
 

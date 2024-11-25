@@ -1,4 +1,5 @@
 package com.contoso.contoso_springboot.Repositories;
+
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import com.contoso.contoso_springboot.Models.User;
@@ -36,11 +37,6 @@ class UserRepositoryTest {
     @Test
     public void getAllUsersTest() {
         List<User> users = usuarioRepository.findAll();
-
         assertThat(users).isNotEmpty();
-    }
-
-    @Test
-    void usersByDepartamentAndCompany() {
     }
 }

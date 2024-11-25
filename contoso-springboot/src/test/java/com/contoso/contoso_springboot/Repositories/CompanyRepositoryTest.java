@@ -34,8 +34,4 @@ class CompanyRepositoryTest {
         List<Company> companies = companyRepository.findAll();
         assertThat(companies).isNotEmpty();
     }
-
-    @Test
-    void salaryByDepartamentAndCompany() {
-    }
 }

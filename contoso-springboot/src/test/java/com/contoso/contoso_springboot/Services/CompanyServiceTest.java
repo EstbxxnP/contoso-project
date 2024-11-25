@@ -8,14 +8,15 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.doNothing;
 
 class CompanyServiceTest {
 
@@ -54,15 +55,12 @@ class CompanyServiceTest {
 
     @Test
     void getCompanysTest() {
-
         Company company = new Company();
         company.setCompanyId(1L);
         company.setName("Globant");
 
         given(companyRepository.findAll()).willReturn(Arrays.asList(company));
-
         List<Company> companys = companyService.getCompanys();
-
         assertThat(companys)
                 .isNotEmpty()
                 .extracting(Company::getName)
@@ -71,37 +69,30 @@ class CompanyServiceTest {
 
     @Test
     void getCompanyById() {
-
         Company company = new Company();
         company.setCompanyId(1L);
         company.setName("Globant");
 
         given(companyRepository.findById(company.getCompanyId())).willReturn(Optional.of(company));
-
         Optional<Company> userNotFound = companyService.getCompanyById(company.getCompanyId());
-
         assertThat(userNotFound).isPresent();
         assertThat(userNotFound.get().getName()).isEqualTo("Globant");
     }
 
     @Test
     void updateCompanyTest() {
-
         Long companyId = 1L;
 
         Company company = new Company();
         company.setCompanyId(1L);
         company.setName("Globant");
-
         Company updatedCompany = new Company();
         updatedCompany.setCompanyId(companyId);
         updatedCompany.setName("Salud");
 
         given(companyRepository.findById(companyId)).willReturn(Optional.of(company));
         given(companyRepository.save(updatedCompany)).willReturn(updatedCompany);
-
         companyService.updateCompany(updatedCompany);
-
         assertThat(updatedCompany.getName()).isEqualTo("Salud");
         verify(companyRepository).save(updatedCompany);
     }

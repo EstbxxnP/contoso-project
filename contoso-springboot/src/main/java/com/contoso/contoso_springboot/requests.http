@@ -13,6 +13,26 @@ Content-Type: application/json
 
 ###
 
+POST localhost:8080/users/add
+Content-Type: application/json
+
+{
+  "name": "Santiago",
+  "lastName": "herrera",
+  "email": "chantiherrera@gmail.com",
+  "position": "Glober",
+  "address": "lacasasca",
+  "phoneNumber": "311 98212",
+  "cityOfResidence": "Caracas",
+  "userStatus": "Active",
+  "salary": 3.3000,
+  "departament": {
+    "idDepartament": 52
+  }
+}
+
+###
+
 POST localhost:8080/person/update
 Content-Type: application/json
 
@@ -26,7 +46,7 @@ Content-Type: application/json
 
 ###
 
-DELETE localhost:8080/person/delete/1
+DELETE localhost:8080/users/delete/3
 Content-Type: application/json
 
 ###

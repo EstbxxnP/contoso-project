@@ -5,7 +5,6 @@ import com.contoso.contoso_springboot.Models.Departament;
 import com.contoso.contoso_springboot.Repositories.DepartamentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 

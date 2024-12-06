@@ -1,17 +1,37 @@
 package com.contoso.contoso_springboot.Repositories;
 
-import org.junit.jupiter.api.BeforeEach;
+import com.contoso.contoso_springboot.Models.Company;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.Rollback;
+import java.util.List;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class CompanyRepositoryTest {
 
-    @BeforeEach
-    void setUp() {
+    @Autowired
+    private CompanyRepository companyRepository;
+
+    @Test
+    @Rollback(false)
+    public void saveDepartamentTest() {
+        Company company = new Company();
+        company.setCompanyId(1L);
+        company.setAddress("Calle 98 # 45 - 67");
+        company.setCityOfOperation("Bogotá, D.C");
+        company.setName("Globant");
+
+        Company companySaved = companyRepository.save(company);
+        assertThat(companySaved.getCompanyId()).isNotNull();
     }
 
     @Test
-    void salaryByDepartamentAndCompany() {
+    public void getAllUsersTest() {
+        List<Company> companies = companyRepository.findAll();
+        assertThat(companies).isNotEmpty();
     }
 }

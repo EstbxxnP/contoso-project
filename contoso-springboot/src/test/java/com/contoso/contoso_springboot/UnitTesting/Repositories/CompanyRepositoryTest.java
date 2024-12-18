@@ -1,6 +1,7 @@
-package com.contoso.contoso_springboot.Repositories;
+package com.contoso.contoso_springboot.UnitTesting.Repositories;
 
 import com.contoso.contoso_springboot.Models.Company;
+import com.contoso.contoso_springboot.Repositories.CompanyRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

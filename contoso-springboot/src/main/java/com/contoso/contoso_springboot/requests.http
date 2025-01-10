@@ -17,12 +17,12 @@ POST localhost:8080/users/add
 Content-Type: application/json
 
 {
-  "name": "Santiago",
-  "lastName": "herrera",
-  "email": "chantiherrera@gmail.com",
+  "name": "Patricip",
+  "lastName": "Estrella",
+  "email": "chantihaserrera@gmail.com",
   "position": "Glober",
-  "address": "lacasasca",
-  "phoneNumber": "311 98212",
+  "address": "lacasaasaca",
+  "phoneNumber": "312 98212",
   "cityOfResidence": "Caracas",
   "userStatus": "Active",
   "salary": 3.3000,

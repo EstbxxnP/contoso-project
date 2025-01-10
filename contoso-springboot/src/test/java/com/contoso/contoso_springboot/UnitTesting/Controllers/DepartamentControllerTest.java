@@ -1,5 +1,6 @@
-package com.contoso.contoso_springboot.Controllers;
+package com.contoso.contoso_springboot.UnitTesting.Controllers;
 
+import com.contoso.contoso_springboot.Controllers.UserController;
 import com.contoso.contoso_springboot.Models.Departament;
 import com.contoso.contoso_springboot.Repositories.DepartamentRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;

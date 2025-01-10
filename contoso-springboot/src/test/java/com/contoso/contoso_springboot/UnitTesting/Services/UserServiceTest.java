@@ -1,7 +1,8 @@
-package com.contoso.contoso_springboot.Services;
+package com.contoso.contoso_springboot.UnitTesting.Services;
 
 import com.contoso.contoso_springboot.Models.User;
 import com.contoso.contoso_springboot.Repositories.UserRepository;
+import com.contoso.contoso_springboot.Services.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;

@@ -17,13 +17,13 @@ POST localhost:8080/users/add
 Content-Type: application/json
 
 {
-  "name": "Patricip",
+  "name": "Patricio",
   "lastName": "Estrella",
   "email": "chantihaserrera@gmail.com",
   "position": "Glober",
-  "address": "lacasaasaca",
+  "address": "Avenida Caracas - 67",
   "phoneNumber": "312 98212",
-  "cityOfResidence": "Caracas",
+  "cityOfResidence": "Bogotá",
   "userStatus": "Active",
   "salary": 3.3000,
   "departament": {

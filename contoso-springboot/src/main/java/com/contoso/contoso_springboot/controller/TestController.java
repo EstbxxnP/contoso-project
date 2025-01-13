@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/public")
-    public String publicHello() {
+    public String publicSite() {
         return "Este es un espacio público!, no requiere autorización";
     }
 
     @GetMapping("/private")
-    public String privateHello() {
+    public String privateSite() {
         return "Este es un espacio privado, estás autorizado!";
     }
 }

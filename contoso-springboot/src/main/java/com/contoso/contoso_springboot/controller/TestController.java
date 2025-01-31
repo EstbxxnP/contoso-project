@@ -14,5 +14,10 @@ public class TestController {
     public String privateSite() {
         return "Este es un espacio privado, estás autorizado!";
     }
+
+    @GetMapping("/login")
+    public String loginSite() {
+        return "Este es un espacio para loguearse:";
+    }
 }
 

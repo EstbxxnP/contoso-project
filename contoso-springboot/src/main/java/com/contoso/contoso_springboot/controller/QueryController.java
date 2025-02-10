@@ -31,6 +31,7 @@ public class QueryController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @PostMapping("/departamentsByCompany")
     public ResponseEntity<Map<String, Long>> queryDepartamentsByCompany(@RequestBody List<Company> companys) {
         try {
@@ -40,6 +41,7 @@ public class QueryController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @PostMapping("/getExpensesByDepartament")
     public ResponseEntity<Map<String, Double>> getExpensesByDepartament(@RequestBody  List<Departament> departaments) {
 
@@ -51,6 +53,7 @@ public class QueryController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @PostMapping("/getExpensesByCompany")
     public ResponseEntity <Map<String, Double>> getExpensesByCompany(@RequestBody  List<Company> companys) {
         try {

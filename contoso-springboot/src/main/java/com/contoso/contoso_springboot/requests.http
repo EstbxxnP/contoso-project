@@ -1,6 +1,4 @@
-
 ### GET request to example server
-
 
 POST localhost:8080/person/addPerson
 Content-Type: application/json
@@ -79,7 +77,6 @@ Content-Type: application/json
 
 ###
 
-
 POST localhost:8080/users/add
 Content-Type: application/json
 
@@ -98,7 +95,6 @@ Content-Type: application/json
 }
 
 ###
-
 
 POST http://localhost:8080/logout
 Content-Type: application/x-www-form-urlencoded
@@ -126,6 +122,3 @@ GET localhost:8080/users
 Content-Type: application/json
 
 ###
-
-
-

@@ -1,6 +1,6 @@
 package com.contoso.contoso_springboot.test.controller;
 
-import com.contoso.contoso_springboot.controllers.UserController;
+import com.contoso.contoso_springboot.controller.UserController;
 import com.contoso.contoso_springboot.model.User;
 import com.contoso.contoso_springboot.repository.UserRepository;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
